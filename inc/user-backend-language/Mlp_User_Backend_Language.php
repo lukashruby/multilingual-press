@@ -49,7 +49,7 @@ class Mlp_User_Backend_Language {
 
 		// Load user specific language in the backend
 		if ( is_admin() ) {
-			add_filter( 'locale', array( $this, 'locale' ) );
+			//add_filter( 'locale', array( $this, 'locale' ) );
 		}
 
 		$this->active = $this->module_manager->register(
@@ -68,6 +68,11 @@ class Mlp_User_Backend_Language {
 		// Add User Field for own blog language
 		add_filter( 'personal_options', array( $this, 'edit_user_profile' ) );
 		add_filter( 'profile_update', array( $this, 'profile_update' ) );
+	}
+
+	public function register_locale_filter() {
+
+		add_filter( 'locale', array( $this, 'locale' ) );
 	}
 
 	/**
@@ -188,7 +193,7 @@ class Mlp_User_Backend_Language {
 		}
 
 		if ( ! did_action( 'set_current_user' ) ) {
-			return $locale;
+			//return $locale;
 		}
 
 		$current_user_id = get_current_user_id();
